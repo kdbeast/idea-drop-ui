@@ -1,22 +1,35 @@
-import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanstackDevtools } from '@tanstack/react-devtools'
+import { HeadContent, Outlet, createRootRoute } from "@tanstack/react-router";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { TanstackDevtools } from "@tanstack/react-devtools";
 
 export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      {
+        name: "description",
+        content:
+          "Share, Explore and Build on the best Startup Ideas and Side Hustles",
+      },
+      {
+        title: "IdeaDrop - Your Idea Hub",
+      }
+    ],
+  }),
   component: () => (
     <>
+      <HeadContent />
       <Outlet />
       <TanstackDevtools
         config={{
-          position: 'bottom-left',
+          position: "bottom-left",
         }}
         plugins={[
           {
-            name: 'Tanstack Router',
+            name: "Tanstack Router",
             render: <TanStackRouterDevtoolsPanel />,
           },
         ]}
       />
     </>
   ),
-})
+});
