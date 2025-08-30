@@ -24,3 +24,20 @@ export const createIdea = async (newIdea: {
 
   return res.data;
 };
+
+export const deleteIdea = async (ideaId: String): Promise<void> => {
+  await api.delete(`/ideas/${ideaId}`);
+};
+
+export const updateIdea = async (
+  ideaId: String,
+  updatedIdea: {
+    title: string;
+    summary: string;
+    description: string;
+    tags: string[];
+  }
+): Promise<Idea> => {
+  const res = await api.put(`/ideas/${ideaId}`, updatedIdea);
+  return res.data;
+};
