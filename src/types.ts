@@ -5,4 +5,5 @@ export type Idea = {
   tags: string[];
   createdAt: string;
   user: string;
+  summary: string;
 };
